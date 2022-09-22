@@ -1,6 +1,148 @@
 import java.util.*
+val reader = Scanner(System.`in`)
+val employe = mutableMapOf(457 to "Кротов М.И.")
+fun addEmploy(){
+    println("Ведите ФИО")
+    val fio = readln()
+    println("Ведите номер рабочего места")
+    val numplace = reader.nextInt()
+    employe.put(numplace, fio)
+}
 
 fun main(args: Array<String>) {
+
+
+    //Модуль 2
+    // Задание 7
+    println("""1. Что есть в Kotlin, но нет в Java?
+        |1.Синглтоны.
+        |2.Null-безопасность.
+        |3.Классы
+        |4. 1 и 2
+    """.trimMargin())
+    var a71 : Int =reader.nextInt()
+    println("""2. Имя переменной должно начинаться:
+        |1.С нижнего подчеркивания
+        |2.Только с цифры
+        |3.Только с буквы
+        |4.Либо с буквы, либо с нижнего подчёркивания.
+    """.trimMargin())
+    a71 += reader.nextInt()
+    println("""3. Переменная val это:
+        |1.константа времени компиляции
+        |2.не константа
+        |3.изменяемая переменная
+        |4.константа времени выполнения
+    """.trimMargin())
+    a71 += reader.nextInt()
+    println("""4. Удалите пробелым в строке "Кот сидит на крыше".:
+        |1.filter { it.isWhitespace() }
+        |2.dropLast(1)
+        |3.drop(1)
+        |4.filter { !it.isWhitespace() }
+    """.trimMargin())
+    a71 += reader.nextInt()
+    println("""5. Лямбда-выражение - это:
+        |1.функция, которая может быть вызвана из другого кода с помощью точечной нотации.
+        |2.функция, связанная с объектом
+        |3.именованный блок кода, вызываемый из других мест в исходном коде
+        |4.анонимная функция, которая может кратко представлять функцию с одним параметром
+    """.trimMargin())
+    a71 += reader.nextInt()
+    println(
+        when(a71){
+        20 -> "У вас отличные знания Kotlin"
+        in 16..19 -> "У вас хорошие знания Kotlin"
+        in 12..15 -> "У вас удовлетворительные знания Kotlin"
+        in 5..11 -> "Не зачтено"
+        else -> "В тесте нужно выбрать вариат ответа от 1 до 4"
+    })
+
+    //Задание 8
+    println("Введите сумму вклада в тыс. руб.")
+    val sum = reader.nextInt()
+    println("Введите срок вклада в месяцах")
+    val dur = reader.nextInt()
+    println("Введите ежемесячный процент по вкладу в %")
+    val per : Double = reader.nextDouble()
+    println("Общий прирост процентов по месяцам:")
+    for (u in 1..dur){
+        println("$u месяц: ${sum*per/100*u} тыс. руб.")
+    }
+
+    // Задание 9
+    val countries = Array(3, {Array(3,{""})})
+    countries[0] = arrayOf("Россия", "Индия", "Индонезия")
+    countries[1] = arrayOf("Москва", "Дели", "Джакарта")
+    countries[2] = arrayOf("Рубль", "Индийская рупия", "Индонезийская рупия")
+    val country1 = Array(3, {Array(3,{""})})
+
+    for(country in 0 until countries.size) {
+         for(cell in 0 until countries[0].size){
+             country1[country][cell] = countries[cell][country]
+         }
+    }
+
+    for(i in country1){
+        for(j in i){
+            print("$j \t")
+        }
+        println()
+    }
+
+    //Задание 10
+    println("""Выберите действие (введите номер действия):
+        |1. Добавить название города
+        |2. Посмотреть в консоли список всех добавленных городов
+        |3. Посмотреть список добавленных городов без повторений
+        |4. Выход из программы
+         """.trimMargin())
+    val choise = reader.nextInt()
+    var cities = mutableListOf("Москва", "Смоленск", "Орел", "Вологда", "Орел")
+    when(choise){
+        1 -> {val city : String
+            city  = readln()
+            cities.add(city)
+        }
+        2 -> for(i in cities){
+            println(i)
+        }
+        3 -> println(cities.distinct())
+        4 -> println("Вы вышли из программы")
+        else -> println("Выберите вариант от 1 до 4")
+    }
+
+    //Задание 11
+
+    val num : Map<Int, String> = mapOf(Pair(4981,"Симонов А.П."), Pair(521, "Иванов П.Р."), Pair(110, "Мирных О.Р."), Pair(26,"Лоскутов П.Д."), Pair(941, "Крисанов М.И."))
+
+    employe.putAll(num)
+    println("""Выберите действие:
+        |1. добавить сотрудника
+        |2. найти сотрудника по рабочему месту
+    """.trimMargin())
+    val choise1 = reader.nextInt()
+    when (choise1){
+        1 -> {
+            addEmploy()
+            println("""Добавить еще сотрудника?
+                |1. Да
+                |2. Нет
+                |3. Вывести список сотрудников
+            """.trimMargin())
+            val ans1 = reader.nextInt()
+            if(ans1 == 1) addEmploy()
+            if(ans1 == 3) println(employe)
+        }
+        2 -> {
+            println("Введите номер рабочего места")
+            val num2 = reader.nextInt()
+            println(employe.get(num2))
+        }
+        else -> println("Вы вышли из программы")
+    }
+
+
     // Модуль 1
     // Задание 1
     var a : Any? = null
@@ -34,7 +176,7 @@ fun main(args: Array<String>) {
     println(x)}
 
     // Задание 6
-    val reader = Scanner(System.`in`)
+
     println("Введите число а")
     val a1 : Int = reader.nextInt()
     println("Введите число b")
