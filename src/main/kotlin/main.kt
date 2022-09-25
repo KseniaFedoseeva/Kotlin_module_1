@@ -1,3 +1,4 @@
+import java.lang.Math.sqrt
 import java.util.*
 val reader = Scanner(System.`in`)
 val employe = mutableMapOf(457 to "Кротов М.И.")
@@ -9,7 +10,64 @@ fun addEmploy(){
     employe.put(numplace, fio)
 }
 
+fun leapYear (year : Int) {
+
+    if(year%4 != 0){
+        if(year%100 == 0){
+            if(year%400 != 0)
+                println("Это обычный год")
+            else println("Високосный год")
+        }
+        else println("Это обычный год")
+    }
+    else println("Високосный год")
+}
+
 fun main(args: Array<String>) {
+
+    //Модуль 3
+    //Задание 12
+    println("Введите год")
+    val y = reader.nextInt()
+    leapYear(y)
+
+    //Задание 13
+    fun countEmploy (vararg names : String) : Int{
+        var count = 0
+        for (n in names)
+            count += 1
+        println("Количество сотрудников: $count")
+        return count
+    }
+
+    //Задание 14
+    fun info(name : String, position : String){
+        println("$name : $position")
+    }
+
+    fun info(name : String, age :Int, position : String){
+        println("$name, $age : $position")
+    }
+
+    fun info(name : String, marital_status : String, position : String){
+        println("$name, $marital_status : $position")
+    }
+
+    fun info(name : String, age :Int, marital_status : String, position : String){
+        println("$name, $age, $marital_status : $position")
+    }
+
+    //Задание 15
+    val ar : Array<String> = arrayOf("Англия", "Франция", "Бельгия", "Германия")
+    val arrPrint = {arr : Array<String> -> for(a in ar) println(a)}
+    arrPrint(ar)
+
+    //Задание 16
+    fun Double.root(){
+       println(sqrt(this))
+    }
+    var example : Double = 2.6
+    example.root()
 
 
     //Модуль 2
