@@ -25,6 +25,13 @@ fun leapYear (year : Int) {
 
 fun main(args: Array<String>) {
 
+    // Модуль 4
+// Задание 23
+    val car = Avto("Kia", "red", "A678OO")
+    car.printInfoAvto()
+
+
+
     //Модуль 3
     //Задание 12
     println("Введите год")
