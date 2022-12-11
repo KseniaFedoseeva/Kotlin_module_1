@@ -25,7 +25,65 @@ fun leapYear (year : Int) {
     } else println("Високосный год")
 }
 
+fun String.getThirdLetter(): Char{
+    return this[2]
+}
+
+fun <T>Array<T>.changePlace(ind1: Int, ind2: Int) {
+    val s1 = this[ind1]
+    val s2 = this[ind2]
+    this[ind1] = s2
+    this[ind2] = s1
+
+}
+
+fun <T>Array<T>.print(){
+    for(i in this){
+        print(i)
+    }
+}
+
     fun main(args: Array<String>) {
+
+
+        val moneyCase = Case<Long>(100000000)
+        println(moneyCase.get())
+        moneyCase.add(500)
+        println(moneyCase.get())
+
+        val h = "rhue"
+        println(h.getThirdLetter())
+
+        val dh = arrayOf("2", "d", "i")
+        dh.changePlace(1, 2)
+        dh.print()
+
+
+        val smsServ = SMSService()
+                val emailServ = EmailService()
+        emailServ.sendMessage("Vasya@", "Petya@", "Message")
+        smsServ.sendMessage(23245678912, 15412369854, "hghgj")
+
+
+
+        val user1 = User("Gut", "Yun", 8)
+        val user2 = User("Gut", "Ykn", 9)
+        println(user2 == user1)
+        println(user1.hashCode())
+        println(user2.hashCode())
+
+
+
+
+
+        val nh=10
+        var count = 0
+       for(ig in 1 until nh){
+           if(ig%2 != 0){
+               count++
+           }
+
+       }
 
         //Итоговое задание
 
